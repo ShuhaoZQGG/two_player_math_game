@@ -17,7 +17,10 @@ class Game
   end
 
   def next_turn
-    puts 'Next turn!'
+    if @current_player.lives > 0
+      puts 'Next turn!'
+    end
+    
     if @current_player == @player1
       @current_player = @player2
     else
