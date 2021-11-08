@@ -1,15 +1,23 @@
 require './Player'
 require './Game'
+require './Question'
 
-john =  Player.new("John")
-
-puts john.name
-puts john.lives
-john.lost_lives
-puts john.lives
 
 game = Game.new
-puts game.turn
+player1 = game.player1
+player2 = game.player2
 
-game.next_turn
-puts game.turn
+
+
+while player1.lives > 0 && player2.lives > 0
+  question = Question.new
+  if question.judge
+    game.correct_answer
+    game.next_turn
+  else
+    game.wrong_answer
+    game.next_turn
+  end
+end
+
+game.game_over
